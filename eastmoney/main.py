@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from scrapy import cmdline
+from scrapy.cmdline import execute
 
-cmdline.execute('scrapy crawl eastbasic'.split())
+execute(['scrapy','crawl','eastbasic'])
