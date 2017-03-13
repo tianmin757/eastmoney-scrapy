@@ -91,18 +91,18 @@ ITEM_PIPELINES = {
 
 # Enable and configure HTTP caching (disabled by default)
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-#HTTPCACHE_ENABLED = True
-#HTTPCACHE_EXPIRATION_SECS = 0
-#HTTPCACHE_DIR = 'httpcache'
-#HTTPCACHE_IGNORE_HTTP_CODES = []
-#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+HTTPCACHE_ENABLED = True
+HTTPCACHE_EXPIRATION_SECS = 0
+HTTPCACHE_DIR = 'httpcache'
+HTTPCACHE_IGNORE_HTTP_CODES = []
+HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 #USER_AGENT_LIST=['Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0',]
 
 #启用Redis调度请求队列
-SCHEDULER='scrapy_redis.scheduler.Scheduler'
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 #确保所有的爬虫通过Redis去重
-DUPLEFILTER='scrapy_redis.dupefilter.REFDUPEFilter'
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 #默认请求序列化使用的是pickle,但是我们可以更改为其他类似的。PS:这玩意儿2.x可以用，3.x的不能用
 #SCHEDULER_SERIALIZER="scrapy_redis.picklecompat"
 #不清除Redis队列，这样可以暂停/恢复 爬取
@@ -113,7 +113,7 @@ SCHEDULER_QUEUE_CLASS='scrapy_redis.queue.PriorityQueue'
 #SCHEDULER_QUEUE_CLASS='scrapy_redis.queue.FifoQueue'
 #SCHEDULER_QUEUE_CLASS='scrapy_redis.queue.LifoQueue'
 #最大空闲时间防止分布式爬虫因为等待而关闭
-SCHEDULER_IDLE_BEFORE_CLOSE=10
+#SCHEDULER_IDLE_BEFORE_CLOSE=10
 #序列化项目管道作为Redis Key存储
 #REDIS_ITEMS_KEY='%(spider)s:items'
 #默认使用ScrapyJSONEncoder进行项目序列化
@@ -142,3 +142,10 @@ MONGODB_HOST='127.0.0.1'
 MONGODB_PORT=27017
 MONGODB_DBNAME="tianmin"
 MONGODB_DOCNAME='eastbasic'
+
+MYSQL_HOSTS='127.0.0.1'
+MYSQL_PORT=3306
+MYSQL_USER='root'
+MYSQL_PASSWORD='root'
+MYSQL_DB='test'
+MYSQL_CHARSET='utf8'
